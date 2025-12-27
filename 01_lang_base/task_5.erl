@@ -6,7 +6,9 @@
 
 
 %% get 3 float numbers from binary
-get_floats(Bin) ->.
+get_floats(Bin) ->
+    [Head | _] = [{F1, F2, F3} || << F1:64/float, F2:64/float, F3:64/float>> <= Bin],
+    Head.
 
 get_floats_test() ->
     ?assertEqual({1.0, 2.5, 100.500},

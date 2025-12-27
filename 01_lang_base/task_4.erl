@@ -6,7 +6,8 @@
 
 
 %% pack 3 float number into single binary
-pack_floats(F1, F2, F3) ->.
+pack_floats(F1, F2, F3) ->
+  <<F1:64/float, F2:64/float, F3:64/float>>.
 
 pack_floats_test() ->
     ?assertEqual(<<63,240,0,0,0,0,0,0,
